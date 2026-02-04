@@ -1,157 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rose Day</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+  margin:0;
+  height:200vh;
+  background:linear-gradient(#050505,#1a0005);
+  font-family:Georgia, serif;
+  color:#ffd6dc;
 }
 
-body {
-    font-family: 'Georgia', serif;
-    background: linear-gradient(to bottom, #0b0b0b, #1a0005);
-    color: #ffd6dc;
-    scroll-behavior: smooth;
+.center{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
-/* Section base */
-section {
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.rose{
+  position:relative;
+  width:140px;
+  height:140px;
 }
 
-/* Rose animation */
-.rose {
-    width: 140px;
-    height: 140px;
-    background: radial-gradient(circle, #ff4d6d, #a00028);
-    border-radius: 50%;
-    position: relative;
-    animation: bloom 2s ease forwards;
+.petal{
+  position:absolute;
+  width:140px;
+  height:140px;
+  background:radial-gradient(circle,#ff4d6d,#900020);
+  border-radius:50%;
+  transform-origin:center;
+  transition:transform 0.1s linear;
 }
 
-.rose::before,
-.rose::after {
-    content: '';
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    background: radial-gradient(circle, #ff4d6d, #7a001f);
-    border-radius: 50%;
-}
+/* closed state */
+.p1{ transform:scale(0.3) rotate(0deg); }
+.p2{ transform:scale(0.3) rotate(60deg); }
+.p3{ transform:scale(0.3) rotate(120deg); }
 
-.rose::before { transform: rotate(45deg); }
-.rose::after  { transform: rotate(-45deg); }
-
-@keyframes bloom {
-    from { transform: scale(0); }
-    to   { transform: scale(1); }
-}
-
-/* Text styles */
-h1 {
-    font-size: 1.9rem;
-    margin-top: 30px;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-top: 20px;
-    max-width: 320px;
-    opacity: 0.9;
-}
-
-/* Scroll hint */
-.scroll {
-    margin-top: 40px;
-    font-size: 0.9rem;
-    opacity: 0.7;
-    animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-}
-
-/* Soft fade-in on scroll feel */
-.fade {
-    animation: fadeUp 1.5s ease both;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+h1{
+  text-align:center;
+  margin-top:180px;
+  font-size:1.8rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Section 1 -->
-<section>
-    <div class="rose"></div>
-    <h1>Happy Rose Day 🌹</h1>
-    <div class="scroll">scroll down ↓</div>
-</section>
+<div class="center">
+  <div class="rose">
+    <div class="petal p1"></div>
+    <div class="petal p2"></div>
+    <div class="petal p3"></div>
+  </div>
+  <h1>Scroll Up 🌹</h1>
+</div>
 
-<!-- Section 2 -->
-<section class="fade">
-    <h1>🌹 A Rose For You</h1>
-    <p>
-        Ek rose sirf phool nahi hota,<br>
-        woh ek feeling hoti hai —<br>
-        jo dil se nikal kar,<br>
-        kisi khaas tak pahunchti hai.
-    </p>
-</section>
+<script>
+let lastScroll = window.scrollY;
 
-<!-- Section 3 -->
-<section class="fade">
-    <h1>💖 Love & Warmth</h1>
-    <p>
-        Jaise rose ke petals soft hote hain,<br>
-        waise hi tera hona meri life ko<br>
-        gentle aur beautiful bana deta hai.
-    </p>
-</section>
+window.addEventListener("scroll",()=>{
+  let current = window.scrollY;
+  let progress = Math.max(0,1 - current/300);
 
-<!-- Section 4 -->
-<section class="fade">
-    <h1>🌸 Forever Vibes</h1>
-    <p>
-        Yeh rose ek promise hai —<br>
-        care ka, respect ka,<br>
-        aur hamesha saath rehne ka.
-    </p>
-</section>
+  document.querySelectorAll(".petal").forEach((p,i)=>{
+    p.style.transform =
+      `scale(${0.3 + progress*0.7}) rotate(${i*60}deg)`;
+  });
 
-<!-- Section 5 -->
-<section class="fade">
-    <h1>🌹 From Me</h1>
-    <p>
-        Is Rose Day par,<br>
-        sirf ek baat kehni thi —<br>
-        You matter. Always.
-    </p>
-</section>
+  lastScroll = current;
+});
+</script>
 
 </body>
 </html>
