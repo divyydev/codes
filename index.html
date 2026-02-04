@@ -206,57 +206,9 @@ frameborder="0" allow="autoplay"></iframe>
   <button class="yes">LET ME ASK YOU AGAIN 💍<br>
   WILL YOU BE MY VALENTINE BABY GIRL ❤️</button>
 </div>
-
-<script>
-function unlock(){
-  if(document.getElementById("pwd").value==="donut"){
-    document.getElementById("lock").style.display="none";
-    start(true);
-  } else alert("Wrong password 😝");
-}
-
-function go(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function start(fromUnlock){
-  const d=new Date().getDate();
-  if(!fromUnlock && d<4){
-    document.body.innerHTML="<h1 style='margin-top:40vh'>Come back tomorrow 😘</h1>";
-    return;
-  }
-  if(d==3) go("d0");
-  else if(d==4) go("d1");
-  else if(d==5) go("d2");
-  else if(d==6) go("d3");
-  else if(d==7) go("d4");
-  else if(d==8) go("d5");
-  else if(d==9) go("d6");
-  else go("d7");
-}
-
-function moveNo(){
-  const b=document.getElementById("noBtn");
-  b.style.left=Math.random()*70+"vw";
-  b.style.top=Math.random()*70+"vh";
-}
-
-function yes(){
-  go("yesPage");
-  for(let i=0;i<30;i++){
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="💖";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=3+Math.random()*3+"s";
-    document.body.appendChild(h);
-  }
-}
-</script>
-
 </body>
 </html>
+
 
 
 
