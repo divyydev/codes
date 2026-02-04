@@ -2,92 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Rose Day</title>
+
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        background: radial-gradient(circle at top, #1b1b1b, #000);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Georgia', serif;
-        overflow: hidden;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .rose-container {
-        text-align: center;
-        animation: fadeIn 2s ease forwards;
-    }
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to bottom, #0b0b0b, #1a0005);
+    color: #ffd6dc;
+    scroll-behavior: smooth;
+}
 
-    .rose {
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle, #ff4d6d, #b00020);
-        border-radius: 50%;
-        position: relative;
-        transform: scale(0);
-        animation: bloom 2.5s ease forwards;
-    }
+/* Section base */
+section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-    .rose::before,
-    .rose::after {
-        content: '';
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle, #ff4d6d, #900018);
-        border-radius: 50%;
-    }
+/* Rose animation */
+.rose {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #ff4d6d, #a00028);
+    border-radius: 50%;
+    position: relative;
+    animation: bloom 2s ease forwards;
+}
 
-    .rose::before {
-        transform: rotate(45deg);
-    }
+.rose::before,
+.rose::after {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #ff4d6d, #7a001f);
+    border-radius: 50%;
+}
 
-    .rose::after {
-        transform: rotate(-45deg);
-    }
+.rose::before { transform: rotate(45deg); }
+.rose::after  { transform: rotate(-45deg); }
 
-    h1 {
-        margin-top: 30px;
-        color: #ffccd5;
-        letter-spacing: 2px;
+@keyframes bloom {
+    from { transform: scale(0); }
+    to   { transform: scale(1); }
+}
+
+/* Text styles */
+h1 {
+    font-size: 1.9rem;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 20px;
+    max-width: 320px;
+    opacity: 0.9;
+}
+
+/* Scroll hint */
+.scroll {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+/* Soft fade-in on scroll feel */
+.fade {
+    animation: fadeUp 1.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
         opacity: 0;
-        animation: textFade 2s ease forwards;
-        animation-delay: 2.5s;
+        transform: translateY(40px);
     }
-
-    @keyframes bloom {
-        0% {
-            transform: scale(0);
-        }
-        100% {
-            transform: scale(1);
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes textFade {
-        to {
-            opacity: 1;
-        }
-    }
+}
 </style>
 </head>
+
 <body>
 
-<div class="rose-container">
+<!-- Section 1 -->
+<section>
     <div class="rose"></div>
     <h1>Happy Rose Day 🌹</h1>
-</div>
+    <div class="scroll">scroll down ↓</div>
+</section>
+
+<!-- Section 2 -->
+<section class="fade">
+    <h1>🌹 A Rose For You</h1>
+    <p>
+        Ek rose sirf phool nahi hota,<br>
+        woh ek feeling hoti hai —<br>
+        jo dil se nikal kar,<br>
+        kisi khaas tak pahunchti hai.
+    </p>
+</section>
+
+<!-- Section 3 -->
+<section class="fade">
+    <h1>💖 Love & Warmth</h1>
+    <p>
+        Jaise rose ke petals soft hote hain,<br>
+        waise hi tera hona meri life ko<br>
+        gentle aur beautiful bana deta hai.
+    </p>
+</section>
+
+<!-- Section 4 -->
+<section class="fade">
+    <h1>🌸 Forever Vibes</h1>
+    <p>
+        Yeh rose ek promise hai —<br>
+        care ka, respect ka,<br>
+        aur hamesha saath rehne ka.
+    </p>
+</section>
+
+<!-- Section 5 -->
+<section class="fade">
+    <h1>🌹 From Me</h1>
+    <p>
+        Is Rose Day par,<br>
+        sirf ek baat kehni thi —<br>
+        You matter. Always.
+    </p>
+</section>
 
 </body>
 </html>
